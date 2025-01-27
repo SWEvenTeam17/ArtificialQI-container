@@ -28,7 +28,7 @@ services:
     restart: always
     build: ./Ollama/
     ports:
-      - "5000:5000"
+      - "5000:11434"
     networks:
       - network
     depends_on:
