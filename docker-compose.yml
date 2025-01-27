@@ -1,0 +1,7 @@
+
+services:
+  backend:
+    build: ./Python/
+    stdin_open: true  # Keeps the container open for interaction
+    tty: true         # Allocates a TTY for the container
+    command: tail -f /dev/null  # Keeps the container running indefinitely
