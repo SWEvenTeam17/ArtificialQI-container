@@ -22,6 +22,19 @@ services:
     depends_on:
       - backend
 
+  ollama:
+    container_name: ollama
+    tty: true
+    restart: always
+    build: ./Ollama/
+    ports:
+      - "5000:5000"
+    networks:
+      - network
+    depends_on:
+      - frontend
+      - backend
+
 volumes:
   data:
 
