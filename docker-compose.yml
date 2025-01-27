@@ -1,7 +1,33 @@
 
 services:
   backend:
+    container_name: backend
     build: ./Python/
-    stdin_open: true  # Keeps the container open for interaction
-    tty: true         # Allocates a TTY for the container
-    command: tail -f /dev/null  # Keeps the container running indefinitely
+    ports:
+      - "8000:8000"
+    networks:
+      - network
+    volumes:
+      - data:/usr/src/app/ArtificialQI
+
+  frontend:
+    container_name: frontend
+    build: ./NodeJS/
+    ports:
+      - "3000:3000"
+    networks:
+      - network
+    volumes:
+      - data:/usr/src/app/ArtificialQI
+    depends_on:
+      - backend
+
+volumes:
+  data:
+
+networks:
+  network:
+    driver: bridge
+
+
+
