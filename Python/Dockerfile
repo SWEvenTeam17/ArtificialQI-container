@@ -8,4 +8,4 @@ WORKDIR /usr/src/app/ArtificialQI
 RUN git checkout develop
 EXPOSE 8000
 WORKDIR /usr/src/app/ArtificialQI/server/ArtificialQI
-CMD python manage.py migrate && daphne -b 0.0.0.0 -p 8000 ArtificialQI.asgi:application
+CMD python manage.py migrate && python manage.py load_models && daphne -b 0.0.0.0 -p 8000 ArtificialQI.asgi:application
